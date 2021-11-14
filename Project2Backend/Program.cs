@@ -23,6 +23,7 @@ builder.Services.AddScoped<UserService>();
 
 #region Components
 builder.Services.AddScoped<UserComponent>();
+builder.Services.AddScoped<CryptoComponent>();
 #endregion
 
 var app = builder.Build();
