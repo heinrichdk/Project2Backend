@@ -14,7 +14,7 @@ public abstract class Repository<T> where T : DataModel
         Project2Context = project2Context;
     }
 
-    public async Task<string> CreateAsync(T entity)
+    public async Task<Guid> CreateAsync(T entity)
     {
         await Project2Context.Set<T>().AddAsync(entity);
         await Project2Context.SaveChangesAsync();
@@ -28,7 +28,7 @@ public abstract class Repository<T> where T : DataModel
         await Project2Context.SaveChangesAsync();
     }
 
-    public async Task DeleteAsync(string id)
+    public async Task DeleteAsync(Guid id)
     {
         var entity = await Project2Context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
 
@@ -49,7 +49,7 @@ public abstract class Repository<T> where T : DataModel
         return await Project2Context.Set<T>().ToListAsync();
     }
 
-    public async Task<T> GetAsync(string id)
+    public async Task<T> GetAsync(Guid id)
     {
         return await Project2Context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
     }

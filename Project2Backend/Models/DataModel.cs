@@ -7,6 +7,6 @@ public class DataModel
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public string Id { get; set; }
+    public Guid Id { get; set; }
     public  DateTimeOffset DateCreated { get; set; }
 }
