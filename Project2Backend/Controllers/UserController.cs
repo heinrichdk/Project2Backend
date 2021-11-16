@@ -28,24 +28,13 @@ public class UserController : ControllerBase
     [HttpPost("sign-up")]
     public async Task<Project2Response<SignInResponse>> SignUpUser(SignUpRequest signUpRequest)
     {
-        var response = await _userService.SignUpUserAsync(signUpRequest);
-        if (response.Success)
-            await SignUserIn(response.Result);
-        return response;
+         return await _userService.SignUpUserAsync(signUpRequest);
     }
 
     [HttpPost("sign-in")]
     public async Task<Project2Response<SignInResponse>> SignInUser(SignInRequest signInRequest)
     {
-        return await _userService.SignInUserAsync(signInRequest);
-    }
+       return  await _userService.SignInUserAsync(signInRequest);
 
-
-    private async Task SignUserIn(SignInResponse signedInUser)
-    {
-        var claim = new Claim(ClaimTypes.Name, signedInUser.Id.ToString());
-        var claimsIdentity = new ClaimsIdentity(new[] {claim}, "serverAuth");
-        var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-        await HttpContext.SignInAsync(claimsPrincipal);
     }
 }

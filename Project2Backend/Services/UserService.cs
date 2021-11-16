@@ -68,7 +68,7 @@ public class UserService
 
             if (existingUser != null)
             {
-                response.Message = "This user already exists. Please try again with an alternative username";
+                response.Message = "This username already taken. Please try again with an alternative username";
                 return response;
             }
 
@@ -115,13 +115,13 @@ public class UserService
 
             if (existingUser == null)
             {
-                response.Message = "Invalid email or password";
+                response.Message = "Invalid username or password";
                 return response;
             }
 
             if (!_cryptoComponent.Verify(existingUser.Salt, existingUser.Password, signInRequest.Password))
             {
-                response.Message = "Invalid email or password";
+                response.Message = "Invalid username or password";
                 return response;
             }
             

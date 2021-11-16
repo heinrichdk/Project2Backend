@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-});
+}).AddCookie();
 
 #region EntityFrameWork
 var connectionString = builder.Configuration.GetConnectionString("Project2ConnectionStr");
