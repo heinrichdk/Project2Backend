@@ -1,9 +1,18 @@
-﻿using AutoMapper;
+﻿using System.Security.Claims;
 using Project2Backend.Components;
 using Project2Backend.Models;
 using Project2Backend.Models.Requests;
 using Project2Backend.Models.Responses;
 using Project2Backend.Validators;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Project2Backend.Services;
 
@@ -134,4 +143,5 @@ public class UserService
 
         return response;
     }
+    
 }
