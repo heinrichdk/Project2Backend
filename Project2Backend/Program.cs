@@ -25,10 +25,13 @@ builder.Services.AddDbContext<Project2Context>(x => x.UseSqlServer(connectionStr
 
 #region Services
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<ImageService>();
 #endregion
 
 #region Components
 builder.Services.AddScoped<UserComponent>();
+builder.Services.AddScoped<ImageComponent>();
+builder.Services.AddScoped<UserImageComponent>();
 builder.Services.AddScoped<CryptoComponent>();
 #endregion
 
