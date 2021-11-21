@@ -27,6 +27,12 @@ public abstract class Repository<T> where T : DataModel
         Project2Context.Set<T>().Remove(entity);
         await Project2Context.SaveChangesAsync();
     }
+    
+    public async Task DeleteListAsync(List<T> entities)
+    {
+        Project2Context.Set<T>().RemoveRange(entities);
+        await Project2Context.SaveChangesAsync();
+    }
 
     public async Task DeleteAsync(Guid id)
     {
