@@ -41,7 +41,7 @@ public class ImageController:ControllerBase
         return await _imageService.DeleteImageAsync(imageId);
     }
 
-    [HttpGet("get-shared-users")]
+    [HttpGet("get-shared-users/{imageId}")]
     public async Task<Project2Response<List<UserSmallResponse>>> GetSharedUsers(Guid imageId)
     {
         return await _imageService.GetSharedUsersAsync(imageId);
@@ -51,5 +51,11 @@ public class ImageController:ControllerBase
     public async Task<Project2Response> ShareImage(ShareImageRequest request)
     {
         return await _imageService.ShareImage(request);
+    }
+    
+    [HttpPost("un-share-image")]
+    public async Task<Project2Response> UnShareImage(ShareImageRequest request)
+    {
+        return await _imageService.UnShareImage(request);
     }
 }

@@ -129,10 +129,17 @@ public class ImageService
         try
         {
             var userImages =  await _userImageComponent.GetSharedUsersByImageId(imageId);
-            await _userImageComponent.DeleteListAsync(userImages);
-
-            await _imageComponent.DeleteAsync(imageId);
-            
+            var list = new List<UserSmallResponse>();
+            foreach (var userImage in userImages)
+            {
+                var user = new UserSmallResponse()
+                {
+                    Id = userImage.UserId,
+                    Username = userImage.User.Username
+                };
+                list.Add(user);
+            }
+            response.Result = list;
             response.Success = true;
 
         }

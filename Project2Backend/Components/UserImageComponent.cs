@@ -31,6 +31,6 @@ public class UserImageComponent : Repository<UserImage>
     public async Task<UserImage> GetUserImageByUserAndImage(Guid requestImageId, Guid userId)
     {
         return Project2Context.UserImages
-            .First(x => x.UserId == userId && x.ImageId == requestImageId);
+            .FirstOrDefault(x => x.UserId == userId && x.ImageId == requestImageId);
     }
 }
